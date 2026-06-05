@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /kartvizit.html
+Disallow: /Materials/
+
+Sitemap: https://www.ajanslabs.com/sitemap.xml
