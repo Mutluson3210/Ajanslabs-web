@@ -84,18 +84,41 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closePopup();
 });
 
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwvqM3lALlecDGHcbxuO8hRgqWZWtHXKitU9TTPOi-DCOW_WgLBzIar78y09_rY0WVbKw/exec';
+
+function sendToSheets(data) {
+  fetch(SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(function () {});
+}
+
 function handleForm(e) {
   e.preventDefault();
   var form = e.target;
   var btn = form.querySelector('.form-submit');
   var successEl = document.getElementById('formSuccess');
+  var formData = Object.fromEntries(new FormData(form));
   btn.disabled = true;
   btn.textContent = 'Gönderiliyor…';
 
+  // Send to Google Sheets
+  sendToSheets({
+    type: 'contact',
+    name: formData.name || '',
+    email: formData.email || '',
+    company: formData.company || '',
+    service: formData.service || '',
+    message: formData.message || ''
+  });
+
+  // Send to Web3Forms for email
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    body: JSON.stringify(formData)
   })
   .then(function (res) { return res.json(); })
   .then(function (data) {
@@ -120,13 +143,21 @@ function handleNewsletter(e) {
   e.preventDefault();
   var form = e.target;
   var btn = form.querySelector('button');
+  var formData = Object.fromEntries(new FormData(form));
   btn.disabled = true;
   btn.textContent = '...';
 
+  // Send to Google Sheets
+  sendToSheets({
+    type: 'newsletter',
+    email: formData.email || ''
+  });
+
+  // Send to Web3Forms for email notification
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    body: JSON.stringify(formData)
   })
   .then(function (res) { return res.json(); })
   .then(function (data) {
