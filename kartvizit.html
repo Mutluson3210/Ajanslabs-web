@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AjansLabs — Kartvizit</title>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:       #0c0c0a;
+    --ink-2:     #151512;
+    --ink-3:     #1f1f1b;
+    --paper:     #f3f0e7;
+    --paper-dim: #8f8d83;
+    --acid:      #d8ff3e;
+    --coral:     #ff5a3c;
+    --display:   'Clash Display', 'Arial Narrow', sans-serif;
+    --body:      'General Sans', system-ui, sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    background:#2a2a2a;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; min-height:100vh;
+    font-family:var(--body); gap:40px; padding:40px 20px;
+  }
+
+  h2{
+    font-family:var(--display); color:#fff; font-size:18px;
+    letter-spacing:.12em; text-transform:uppercase; opacity:.5;
+  }
+
+  .card-pair{
+    display:flex; gap:50px; flex-wrap:wrap; justify-content:center;
+  }
+
+  .label{
+    font-family:var(--body); color:#666; font-size:12px;
+    text-transform:uppercase; letter-spacing:.2em;
+    text-align:center; margin-bottom:10px;
+  }
+
+  /* ── CARD BASE ── */
+  /* Standard business card: 90mm × 50mm → at 300dpi = 1063×591px */
+  /* On-screen we show at 1.2x for clarity */
+  .card{
+    width:450px; height:255px;
+    border-radius:10px; overflow:hidden;
+    position:relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+
+  /* ══════════════════════════════════════
+     FRONT SIDE
+     ══════════════════════════════════════ */
+  .front{
+    background:var(--ink);
+    padding:34px 36px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+
+  /* top row */
+  .front-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+  }
+  .brand{
+    font-family:var(--display); font-size:22px; font-weight:600;
+    color:var(--paper); letter-spacing:-.02em;
+  }
+  .brand span{ color:var(--acid); }
+
+  .tagline{
+    font-size:10px; color:var(--paper-dim); letter-spacing:.18em;
+    text-transform:uppercase; text-align:right; max-width:14ch;
+    line-height:1.5;
+  }
+
+  /* accent line */
+  .accent-line{
+    width:40px; height:2px; background:var(--acid);
+  }
+
+  /* person info */
+  .person{}
+  .person-name{
+    font-family:var(--display); font-size:26px; font-weight:600;
+    color:var(--paper); text-transform:uppercase;
+    letter-spacing:-.01em; line-height:1;
+  }
+  .person-title{
+    font-size:12px; color:var(--acid); font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase;
+    margin-top:6px;
+  }
+
+  /* decorative corner */
+  .corner-accent{
+    position:absolute; top:0; right:0;
+    width:80px; height:80px;
+    background:linear-gradient(135deg, var(--acid) 0%, var(--acid) 50%, transparent 50%);
+    opacity:.08;
+  }
+
+  /* EQ bars */
+  .eq-mini{
+    position:absolute; bottom:34px; right:36px;
+    display:flex; gap:3px; align-items:flex-end; height:20px;
+  }
+  .eq-mini span{
+    width:3px; background:var(--acid); border-radius:1px; opacity:.4;
+  }
+  .eq-mini span:nth-child(1){ height:40%; }
+  .eq-mini span:nth-child(2){ height:100%; }
+  .eq-mini span:nth-child(3){ height:60%; }
+  .eq-mini span:nth-child(4){ height:85%; }
+  .eq-mini span:nth-child(5){ height:30%; }
+
+  /* ══════════════════════════════════════
+     BACK SIDE
+     ══════════════════════════════════════ */
+  .back{
+    background:var(--ink);
+    padding:34px 36px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position:relative;
+  }
+
+  .back-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+  }
+
+  .contact-list{
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .contact-item{
+    display:flex; align-items:center; gap:10px;
+    font-size:12px; color:var(--paper); line-height:1;
+  }
+  .contact-icon{
+    width:22px; height:22px; border-radius:50%;
+    border:1px solid var(--ink-3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; color:var(--acid); flex-shrink:0;
+  }
+  .contact-item a{ color:var(--paper); text-decoration:none; }
+
+  .back-bottom{
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+
+  .back-tagline{
+    font-family:var(--display); font-size:16px; color:var(--paper);
+    text-transform:uppercase; letter-spacing:-.01em; line-height:1.1;
+  }
+  .back-tagline em{
+    font-style:normal; color:var(--acid);
+  }
+
+  .brand-mini{
+    font-family:var(--display); font-size:13px; font-weight:600;
+    color:var(--paper-dim); letter-spacing:-.02em;
+  }
+  .brand-mini span{ color:var(--acid); }
+
+  /* vertical accent */
+  .v-line{
+    position:absolute; right:90px; top:34px; bottom:34px;
+    width:1px; background:var(--ink-3);
+  }
+
+  /* corner dot pattern */
+  .dots{
+    position:absolute; top:28px; right:30px;
+    display:grid; grid-template-columns:repeat(3,6px); gap:6px;
+  }
+  .dots span{
+    width:4px; height:4px; border-radius:50%;
+    background:var(--acid); opacity:.25;
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn{
+    font-family:var(--display); font-size:14px; font-weight:600;
+    color:var(--ink); background:var(--acid);
+    border:none; border-radius:100px;
+    padding:14px 34px; cursor:pointer;
+    letter-spacing:.06em; text-transform:uppercase;
+    transition:transform .3s, background .3s;
+  }
+  .print-btn:hover{ transform:translateY(-2px); background:#fff; }
+
+  .note{
+    font-size:12px; color:#666; text-align:center; max-width:400px;
+  }
+
+  @media print{
+    body{ background:#fff; }
+    h2,.label,.print-btn,.note{ display:none; }
+    .card{ box-shadow:none; border:1px solid #ccc; }
+    .card-pair{ gap:20px; }
+  }
+</style>
+</head>
+<body>
+
+<h2>AjansLabs — Kartvizit Tasarımı</h2>
+
+<div class="card-pair">
+  <div>
+    <div class="label">Ön Yüz</div>
+    <div class="card front">
+      <div class="corner-accent"></div>
+      <div class="front-top">
+        <div class="brand">Ajans<span>Labs</span></div>
+        <div class="tagline">Creative<br>Agency</div>
+      </div>
+      <div>
+        <div class="accent-line"></div>
+        <div class="person" style="margin-top:16px;">
+          <div class="person-name">Murat Gönüllü</div>
+          <div class="person-title">Kurucu / Founder</div>
+        </div>
+      </div>
+      <div class="eq-mini">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="label">Arka Yüz</div>
+    <div class="card back">
+      <div class="v-line"></div>
+      <div class="dots">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <a href="mailto:info@ajanslabs.com">info@ajanslabs.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">☎</div>
+          <a href="tel:+905394901847">+90 539 490 18 47</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◎</div>
+          <a href="https://www.ajanslabs.com">www.ajanslabs.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◈</div>
+          İstanbul, TR
+        </div>
+      </div>
+      <div class="back-bottom">
+        <div class="back-tagline">Fikir, tasarım<br>&amp; <em>ritim.</em></div>
+        <div class="brand-mini">Ajans<span>Labs</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">Yazdır / PDF Olarak Kaydet</button>
+<p class="note">Tarayıcının yazdır menüsünden "PDF olarak kaydet" seçerek dışa aktarabilirsin. Standart kartvizit boyutu: 90×50mm</p>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+.DS_Store
+.claude/
+Materials/
+node_modules/
+assets/media/*.mp3
