@@ -84,15 +84,11 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closePopup();
 });
 
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwvqM3lALlecDGHcbxuO8hRgqWZWtHXKitU9TTPOi-DCOW_WgLBzIar78y09_rY0WVbKw/exec';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw2J9_hEa6BWLfnVS32A2b3YYYIlxIDrt5uMvdH4v_zUmpXdmiY2Xi0FtHzdZYYCV6ozw/exec';
 
 function sendToSheets(data) {
-  fetch(SHEETS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).catch(function () {});
+  var params = new URLSearchParams(data).toString();
+  fetch(SHEETS_URL + '?' + params, { mode: 'no-cors' }).catch(function () {});
 }
 
 function handleForm(e) {
