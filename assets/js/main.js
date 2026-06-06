@@ -1,4 +1,5 @@
 /* AjansLabs — interactions */
+window._i18n_lang = localStorage.getItem('ajanslabs_lang') || 'tr';
 (function () {
   'use strict';
 
@@ -98,7 +99,7 @@ function handleForm(e) {
   var successEl = document.getElementById('formSuccess');
   var formData = Object.fromEntries(new FormData(form));
   btn.disabled = true;
-  btn.textContent = 'Gönderiliyor…';
+  btn.textContent = window._i18n_lang === 'en' ? 'Sending…' : 'Gönderiliyor…';
 
   // Send to Google Sheets
   sendToSheets({
@@ -124,14 +125,14 @@ function handleForm(e) {
       successEl.style.display = 'block';
     } else {
       btn.disabled = false;
-      btn.textContent = '— Ücretsiz İş Analizi Talep Et —';
-      alert('Bir hata oluştu, lütfen tekrar deneyin.');
+      btn.textContent = window._i18n_lang === 'en' ? '— Request a Free Business Analysis — →' : '— Ücretsiz İş Analizi Talep Et — →';
+      alert(window._i18n_lang === 'en' ? 'An error occurred, please try again.' : 'Bir hata oluştu, lütfen tekrar deneyin.');
     }
   })
   .catch(function () {
     btn.disabled = false;
-    btn.textContent = '— Ücretsiz İş Analizi Talep Et —';
-    alert('Bağlantı hatası, lütfen tekrar deneyin.');
+    btn.textContent = window._i18n_lang === 'en' ? '— Request a Free Business Analysis — →' : '— Ücretsiz İş Analizi Talep Et — →';
+    alert(window._i18n_lang === 'en' ? 'Connection error, please try again.' : 'Bağlantı hatası, lütfen tekrar deneyin.');
   });
 }
 
@@ -162,11 +163,11 @@ function handleNewsletter(e) {
       document.getElementById('newsletterSuccess').style.display = 'block';
     } else {
       btn.disabled = false;
-      btn.textContent = 'Kayıt Ol';
+      btn.textContent = window._i18n_lang === 'en' ? 'Subscribe' : 'Kayıt Ol';
     }
   })
   .catch(function () {
     btn.disabled = false;
-    btn.textContent = 'Kayıt Ol';
+    btn.textContent = window._i18n_lang === 'en' ? 'Subscribe' : 'Kayıt Ol';
   });
 }
