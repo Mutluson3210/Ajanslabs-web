@@ -2,3 +2,6 @@
 .claude/
 Materials/
 node_modules/
+.vercel
+LeadOS/
+og-generator.html

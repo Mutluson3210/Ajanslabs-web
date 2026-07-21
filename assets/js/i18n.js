@@ -26,7 +26,7 @@
     svc1_tags: { tr: 'Marka kimliği · Kampanya & strateji · Lansman projeleri', en: 'Brand identity · Campaign & strategy · Launch projects' },
     svc2_name: { tr: 'Tasarım',               en: 'Design' },
     svc2_tags: { tr: 'Dijital & basılı materyal · Web tasarımı · Sosyal medya görselleri', en: 'Digital & print materials · Web design · Social media visuals' },
-    svc3_name: { tr: 'Geliştirme',            en: 'Development' },
+    svc3_name: { tr: 'Web & APP',             en: 'Web & APP' },
     svc3_tags: { tr: 'Web siteleri · iOS & Android uygulamaları', en: 'Websites · iOS & Android apps' },
     svc4_name: { tr: 'AI-Dönüşüm',           en: 'AI-Transformation' },
     svc4_tags: { tr: 'CRM otomasyonu · Akıllı chatbot · Süreç otomasyonu', en: 'CRM automation · Smart chatbot · Process automation' },
@@ -110,8 +110,8 @@
     form_success:    { tr: 'Teşekkürler! En kısa sürede seninle iletişime geçeceğiz.', en: 'Thank you! We\'ll be in touch shortly.' },
 
     form_service_opts: {
-      tr: ['Seçiniz…', 'Marka & Strateji', 'AI-Dönüşüm', 'AI-Marketing', 'Tasarım', 'Geliştirme', 'Ses & Müzik', 'Medya & PR', 'Hizmet Paketi'],
-      en: ['Select…', 'Brand & Strategy', 'AI-Transformation', 'AI-Marketing', 'Design', 'Development', 'Sound & Music', 'Media & PR', 'Service Package']
+      tr: ['Seçiniz…', 'Marka & Strateji', 'AI-Dönüşüm', 'AI-Marketing', 'Tasarım', 'Web & APP', 'Ses & Müzik', 'Medya & PR', 'Hizmet Paketi'],
+      en: ['Select…', 'Brand & Strategy', 'AI-Transformation', 'AI-Marketing', 'Design', 'Web & APP', 'Sound & Music', 'Media & PR', 'Service Package']
     },
 
     /* ── PAKETLER PAGE ── */
