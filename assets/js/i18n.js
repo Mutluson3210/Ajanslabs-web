@@ -9,6 +9,8 @@
     nav_packages:   { tr: 'Hizmet Paketleri',   en: 'Service Packages' },
     nav_music:      { tr: 'Müzik & PR',         en: 'Music & PR' },
     nav_about:      { tr: 'Hakkımızda',         en: 'About' },
+    nav_blog:       { tr: 'Blog',               en: 'Blog' },
+    nav_contact:    { tr: 'İletişim',           en: 'Contact' },
     nav_cta:        { tr: '— Ücretsiz İş Analizi Talep Et —', en: '— Request a Free Business Analysis —' },
 
     /* ── HERO ── */
