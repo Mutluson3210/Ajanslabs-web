@@ -1,19 +1,17 @@
 # AjansLabs — Instagram Post İçerikleri
 
 Bu dosya, AjansLabs Instagram hesabı için hazırlanan 5 gönderilik ilk içerik setini içerir.
-Her post; görsel konsepti, caption metnini ve hashtag setini içerir. Görseller Moda (moda.app)
-üzerinde AjansLabs marka kitine (warm black · acid yeşili · coral · Clash Display / General Sans)
-uygun olarak, her post için 3 alternatif konsept şeklinde üretilmiştir — canvas linkleri aşağıda
-her postun altında yer alır. Bu oturumun ağ politikası `assets-cdn.moda.app` üzerinden dosya
-indirmeye izin vermediği için PNG'ler bu repoya otomatik kaydedilemedi; canvas linkinden "Export"
-ile istediğiniz konsepti PNG/JPEG olarak indirip `assets/img/instagram/` klasörüne eklemeniz yeterli.
+Her post; hazır grafik (PNG, 1080×1350 — Instagram feed için önerilen dikey oran), caption metni
+ve hashtag setini içerir. Grafikler AjansLabs marka sistemine (warm black `#0c0c0a` · acid yeşili
+`#d8ff3e` · coral `#ff5a3c` · kinetik büyük tipografi · ses dalgası/ekolayzer motifleri) uygun
+olarak üretilmiştir ve `assets/img/instagram/` klasöründe yer alır.
 
 ---
 
 ## Post 1 — Marka Manifestosu
 
-**Görsel (3 konsept):** https://moda.app/canvas/9e3ea8f4-c2e5-4765-a7eb-ae54344444e3
-**Format:** Feed, 1080×1080
+**Görsel:** `assets/img/instagram/post-1-manifesto.png`
+**Format:** Feed (dikey), 1080×1350
 
 **Caption:**
 Fikir, tasarım & ritim. 🎛️
@@ -33,8 +31,8 @@ hepsi tek çatı altında.
 
 ## Post 2 — AI-Dönüşüm & AI-Marketing
 
-**Görsel (3 konsept):** https://moda.app/canvas/68ab6183-8e89-46f6-924f-2c6acfc99490
-**Format:** Feed, 1080×1080
+**Görsel:** `assets/img/instagram/post-2-ai-donusum.png`
+**Format:** Feed (dikey), 1080×1350
 
 **Caption:**
 İşin artık düşünüyor. 🧠⚡
@@ -52,8 +50,8 @@ zamanını gerçekten önemli olan işlere ayır.
 
 ## Post 3 — Ses & Müzik / Sonic Branding
 
-**Görsel (3 konsept):** https://moda.app/canvas/99dd3477-18c0-4a6e-938c-c5a141b78264
-**Format:** Feed, 1080×1080
+**Görsel:** `assets/img/instagram/post-3-ses-muzik.png`
+**Format:** Feed (dikey), 1080×1350
 
 **Caption:**
 Bir marka görünür, ama iyi bir marka duyulur. 🎧
@@ -71,8 +69,8 @@ kaydol.
 
 ## Post 4 — Blog Duyurusu (2026 AI Trendleri)
 
-**Görsel (3 konsept):** https://moda.app/canvas/29a83871-75e8-4aeb-8487-e5b92f3cf91b
-**Format:** Feed, 1080×1080
+**Görsel:** `assets/img/instagram/post-4-blog-ai-trendleri.png`
+**Format:** Feed (dikey), 1080×1350
 
 **Caption:**
 2026'da iş dünyasını şekillendiren AI trendleri, blogumuzda. 📖
@@ -89,8 +87,8 @@ Devamını okumak için bio'daki linke göz at.
 
 ## Post 5 — CTA / Ücretsiz İş Analizi
 
-**Görsel (3 konsept):** https://moda.app/canvas/352c9922-3104-45ca-ab01-45dd775b4069
-**Format:** Feed, 1080×1080
+**Görsel:** `assets/img/instagram/post-5-cta.png`
+**Format:** Feed (dikey), 1080×1350
 
 **Caption:**
 Bir fikrin mi var? 💡
@@ -108,6 +106,6 @@ birlikte konuşalım.
 
 ## Yayın notu
 Postlar sırasıyla (1) marka tanıtımı, (2) AI hizmetleri, (3) farklılaştırıcı ses & müzik hizmeti,
-(4) içerik/otorite (blog), (5) doğrudan CTA olacak şekilde bir haftalık ritm önerir. Görseller Moda
-üzerinde AjansLabs marka kiti uygulanarak, her post için 3 alternatif konsept olarak üretilmiştir.
-Beğendiğiniz konsepti canvas linkinden Export edip `assets/img/instagram/` klasörüne ekleyin.
+(4) içerik/otorite (blog), (5) doğrudan CTA olacak şekilde bir haftalık ritm önerir. Grafikler
+1080×1350 (4:5) formatında, AjansLabs'ın marka renkleri ve tipografi diliyle hazırlanmıştır ve
+doğrudan Instagram'a yüklenebilir.
