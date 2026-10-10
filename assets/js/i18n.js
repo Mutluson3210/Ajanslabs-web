@@ -43,6 +43,7 @@
     work_title: { tr: 'Seçili işler',          en: 'Selected work' },
     work_idx:   { tr: '(02 — Portfolyo)',      en: '(02 — Portfolio)' },
     work1_kind: { tr: 'Reklam Filmi',          en: 'Commercial' },
+    work1_title: { tr: 'KARACA Reklam Filmleri', en: 'KARACA Films' },
     work2_kind: { tr: 'Web: E-Ticaret',        en: 'Web: E-Commerce' },
     work3_kind: { tr: 'Marka Müziği',          en: 'Brand Music' },
     work4_kind: { tr: 'Müzik Videosu',         en: 'Music Video' },
