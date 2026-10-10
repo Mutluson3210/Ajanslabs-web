@@ -76,9 +76,12 @@ function openAudioPopup(src, title) {
   document.getElementById('popupAudioTitle').textContent = title;
   showOverlay('popupAudio');
 }
-function openVideoPopup(embedUrl, title) {
+function openVideoPopup(embedUrl, title, lang) {
+  var titleEl = document.getElementById('popupVideoTitle');
   document.getElementById('popupIframe').src = embedUrl;
-  document.getElementById('popupVideoTitle').textContent = title;
+  titleEl.textContent = title;
+  // Non-Turkish titles need their own lang so uppercase doesn't turn "i" into "İ"
+  if (lang) titleEl.setAttribute('lang', lang); else titleEl.removeAttribute('lang');
   showOverlay('popupVideo');
 }
 document.addEventListener('keydown', function (e) {
