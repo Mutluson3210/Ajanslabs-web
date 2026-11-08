@@ -195,12 +195,20 @@ function handleNewsletter(e) {
   fab.innerHTML = GLYPH + '<span class="wa-label"></span>';
   document.body.appendChild(fab);
 
+  // footer son satırı butonun soluna hizalansın diye gerçek genişliği paylaş
+  function syncWidth() {
+    document.documentElement.style.setProperty('--wa-w', fab.offsetWidth + 'px');
+  }
+
   // i18n.js dil değiştirdiğinde de çağrılır
   window.updateWaFab = function (lang) {
     lang = (lang === 'en' || lang === 'tr') ? lang : (window._i18n_lang || 'tr');
     fab.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(MSG[lang]);
     fab.querySelector('.wa-label').textContent = LABEL[lang];
     fab.setAttribute('aria-label', LABEL[lang]);
+    syncWidth();
   };
   window.updateWaFab();
+  window.addEventListener('resize', syncWidth);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncWidth);
 })();

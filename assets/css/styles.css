@@ -24,6 +24,11 @@
   --gutter: clamp(20px, 5vw, 80px);
   --radius: 14px;
 
+  /* sabit WhatsApp butonu — footer son satırı da bu ölçülere hizalanır */
+  --wa-offset: clamp(16px, 3vw, 32px);
+  --wa-h: 56px;
+  --wa-w: 210px;            /* main.js gerçek genişlikle günceller */
+
   --ease: cubic-bezier(.22,1,.36,1);
 }
 
@@ -363,13 +368,20 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; line-height:.96; letter-s
 .endcta h2 a:hover{ color:#fff; }
 .endcta p{ color:var(--paper-dim); margin-top:24px; font-size:18px; }
 
-footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter); }
+footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-offset); }
 .foot-grid{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; align-items:flex-start; }
 .foot-grid .brand{ font-size:30px; }
 .foot-col h4{ font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:16px; }
 .foot-col a{ display:block; margin-bottom:10px; font-size:15px; color:var(--paper); transition:color .3s; }
 .foot-col a:hover{ color:var(--acid); }
+/* son satır: sağdaki "İstanbul, TR" sabit WhatsApp butonunun soluna,
+   onunla aynı hizaya oturur (kutu yüksekliği = buton yüksekliği) */
 .foot-base{ margin-top:50px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  align-items:flex-end;
+  /* sağdaki "İstanbul, TR" butonun soluna; son satırın merkezi butonun
+     merkeziyle aynı hizaya gelsin (0.75em = satır yüksekliğinin yarısı) */
+  padding-right:max(0px, calc(var(--wa-w) + var(--wa-offset) + 20px - var(--gutter)));
+  padding-bottom:calc(var(--wa-h) / 2 - 0.75em);
   color:var(--paper-dim); font-size:13px; }
 
 /* =========================================================
@@ -572,11 +584,11 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter); }
    ========================================================= */
 .wa-fab{
   position:fixed;
-  right:clamp(16px,3vw,32px);
-  bottom:clamp(16px,3vw,32px);
+  right:var(--wa-offset);
+  bottom:var(--wa-offset);
   z-index:998;
   display:inline-flex; align-items:center; gap:10px;
-  height:56px; padding:0 22px 0 18px;
+  height:var(--wa-h); padding:0 22px 0 18px;
   border-radius:999px;
   background:var(--acid); color:var(--ink);
   font-family:var(--body); font-weight:600; font-size:15px; line-height:1;
@@ -612,6 +624,6 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter); }
 
 /* mobilde sadece ikon */
 @media(max-width:640px){
-  .wa-fab{ width:56px; padding:0; justify-content:center; }
+  .wa-fab{ width:var(--wa-h); padding:0; justify-content:center; }
   .wa-fab .wa-label{ display:none; }
 }
