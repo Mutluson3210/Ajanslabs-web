@@ -26,7 +26,8 @@
 
   /* sabit WhatsApp butonu — footer son satırı da bu ölçülere hizalanır.
      Sağ kenarı --gutter ile içerik sütununa (hero meta, footer) hizalanır. */
-  --wa-bottom: clamp(20px, 4vw, 44px);
+  --wa-right:  calc(var(--gutter) - 5px);          /* içerik kenarından 5px dışarı */
+  --wa-bottom: calc(clamp(20px, 4vw, 44px) + 15px);
   --wa-h: 56px;
   --wa-w: 210px;            /* main.js gerçek genişlikle günceller */
 
@@ -381,8 +382,8 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-b
   align-items:flex-end;
   /* sağdaki "İstanbul, TR" butonun soluna; son satırın merkezi butonun
      merkeziyle aynı hizaya gelsin (0.75em = satır yüksekliğinin yarısı).
-     Buton da --gutter hizasında olduğu için sadece genişliği kadar yer ayrılır. */
-  padding-right:calc(var(--wa-w) + 20px);
+     Ayrılan yer butonun gerçek konumundan türer, sabitler değişse de tutar. */
+  padding-right:max(0px, calc(var(--wa-right) + var(--wa-w) + 20px - var(--gutter)));
   padding-bottom:calc(var(--wa-h) / 2 - 0.75em);
   color:var(--paper-dim); font-size:13px; }
 
@@ -586,7 +587,7 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-b
    ========================================================= */
 .wa-fab{
   position:fixed;
-  right:var(--gutter);
+  right:var(--wa-right);
   bottom:var(--wa-bottom);
   z-index:998;
   display:inline-flex; align-items:center; gap:10px;
