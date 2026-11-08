@@ -247,6 +247,9 @@
 
     // Update form button text in JS handlers (for error recovery)
     window._i18n_lang = lang;
+
+    // WhatsApp FAB (etiket + hazır mesaj)
+    if (window.updateWaFab) window.updateWaFab(lang);
   }
 
   // Expose globally

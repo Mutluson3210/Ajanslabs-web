@@ -566,3 +566,52 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter); }
   .hero-head .line i{ transform:none; }
   .hero-foot{ opacity:1; }
 }
+
+/* =========================================================
+   WHATSAPP FAB — her sayfada main.js tarafından enjekte edilir
+   ========================================================= */
+.wa-fab{
+  position:fixed;
+  right:clamp(16px,3vw,32px);
+  bottom:clamp(16px,3vw,32px);
+  z-index:998;
+  display:inline-flex; align-items:center; gap:10px;
+  height:56px; padding:0 22px 0 18px;
+  border-radius:999px;
+  background:var(--acid); color:var(--ink);
+  font-family:var(--body); font-weight:600; font-size:15px; line-height:1;
+  letter-spacing:-.01em; white-space:nowrap;
+  box-shadow:0 12px 34px rgba(0,0,0,.5);
+  transition:transform .35s var(--ease), background .35s var(--ease);
+  animation:wa-in .55s var(--ease) .7s both;
+}
+.wa-fab:hover{ transform:translateY(-3px) scale(1.03); background:#e6ff6a; }
+.wa-fab:active{ transform:translateY(0) scale(.98); }
+.wa-fab:focus-visible{ outline:3px solid var(--paper); outline-offset:3px; }
+.wa-fab svg{ width:26px; height:26px; flex:none; fill:currentColor; }
+
+/* nefes alan halka */
+.wa-fab::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:inherit;
+  border:2px solid var(--acid);
+  opacity:0;
+  pointer-events:none;
+  animation:wa-pulse 3s ease-out 1.8s infinite;
+}
+
+@keyframes wa-in{
+  from{ opacity:0; transform:translateY(14px) scale(.9); }
+}
+@keyframes wa-pulse{
+  0%{   opacity:.5; transform:scale(1); }
+  70%{  opacity:0;  transform:scale(1.4); }
+  100%{ opacity:0;  transform:scale(1.4); }
+}
+
+/* mobilde sadece ikon */
+@media(max-width:640px){
+  .wa-fab{ width:56px; padding:0; justify-content:center; }
+  .wa-fab .wa-label{ display:none; }
+}
