@@ -209,6 +209,10 @@ function handleNewsletter(e) {
     syncWidth();
   };
   window.updateWaFab();
+
+  // Butonun kutusu ne sebeple değişirse değişsin (dil, font, kırılma noktası,
+  // pencere boyutu) --wa-w güncel kalsın; bayat değer footer'da çakışmaya yol açıyor.
   window.addEventListener('resize', syncWidth);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncWidth);
+  if (window.ResizeObserver) new ResizeObserver(syncWidth).observe(fab);
 })();

@@ -24,8 +24,9 @@
   --gutter: clamp(20px, 5vw, 80px);
   --radius: 14px;
 
-  /* sabit WhatsApp butonu — footer son satırı da bu ölçülere hizalanır */
-  --wa-offset: clamp(16px, 3vw, 32px);
+  /* sabit WhatsApp butonu — footer son satırı da bu ölçülere hizalanır.
+     Sağ kenarı --gutter ile içerik sütununa (hero meta, footer) hizalanır. */
+  --wa-bottom: clamp(20px, 4vw, 44px);
   --wa-h: 56px;
   --wa-w: 210px;            /* main.js gerçek genişlikle günceller */
 
@@ -154,7 +155,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; line-height:.96; letter-s
 @keyframes rise{ to{ transform:translateY(0); } }
 
 .hero-foot{
-  display:flex; justify-content:space-between; align-items:flex-end;
+  display:flex; justify-content:space-between; align-items:flex-start;
   gap:40px; margin-top:48px; flex-wrap:wrap;
   opacity:0; animation:fade .8s var(--ease) .5s forwards;
 }
@@ -368,7 +369,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; line-height:.96; letter-s
 .endcta h2 a:hover{ color:#fff; }
 .endcta p{ color:var(--paper-dim); margin-top:24px; font-size:18px; }
 
-footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-offset); }
+footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-bottom); }
 .foot-grid{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; align-items:flex-start; }
 .foot-grid .brand{ font-size:30px; }
 .foot-col h4{ font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:16px; }
@@ -379,8 +380,9 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-o
 .foot-base{ margin-top:50px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
   align-items:flex-end;
   /* sağdaki "İstanbul, TR" butonun soluna; son satırın merkezi butonun
-     merkeziyle aynı hizaya gelsin (0.75em = satır yüksekliğinin yarısı) */
-  padding-right:max(0px, calc(var(--wa-w) + var(--wa-offset) + 20px - var(--gutter)));
+     merkeziyle aynı hizaya gelsin (0.75em = satır yüksekliğinin yarısı).
+     Buton da --gutter hizasında olduğu için sadece genişliği kadar yer ayrılır. */
+  padding-right:calc(var(--wa-w) + 20px);
   padding-bottom:calc(var(--wa-h) / 2 - 0.75em);
   color:var(--paper-dim); font-size:13px; }
 
@@ -584,8 +586,8 @@ footer{ border-top:1px solid var(--ink-3); padding:50px var(--gutter) var(--wa-o
    ========================================================= */
 .wa-fab{
   position:fixed;
-  right:var(--wa-offset);
-  bottom:var(--wa-offset);
+  right:var(--gutter);
+  bottom:var(--wa-bottom);
   z-index:998;
   display:inline-flex; align-items:center; gap:10px;
   height:var(--wa-h); padding:0 22px 0 18px;
